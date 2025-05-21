@@ -91,5 +91,16 @@ def get_order(oid):
     return jsonify(order_dict)
 
 
+@app.delete("/orders/<int:oid>")
+def delete_order(oid):
+    order = Order.query.get_or_404(oid)
+
+    db.session.delete(order)
+    db.session.commit()
+
+    return jsonify({"message": f"Order with {oid} successfully deleted"}), 200
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
