@@ -98,7 +98,7 @@ def delete_order(oid):
     db.session.delete(order)
     db.session.commit()
 
-    return jsonify({"message": f"Order with {oid} successfully deleted"}), 200
+    return jsonify({"message": f"Order with id {oid} successfully deleted"}), 200
 
 
 
